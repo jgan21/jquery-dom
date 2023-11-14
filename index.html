@@ -60,27 +60,66 @@
   <div class="row mb-5">
     <div class="col-sm-4">
       Red
-      <input class="form-control" type="number" min="0" max="255" value="255">
+      <input class="form-control" type="number" min="0" max="255" value="255">   <!-- TODO: CHANGE BACK -->
     </div>
     <div class="col-sm-4">
       Blue
-      <input class="form-control" type="number" min="0" max="255" value="255">
+      <input class="form-control" type="number" min="0" max="255" value="155">
     </div>
     <div class="col-sm-4">
       Green
-      <input class="form-control" type="number" min="0" max="255" value="255">
+      <input class="form-control" type="number" min="0" max="255" value="55">
     </div>
   </div>
 </div>
 <script src="https://unpkg.com/jquery"></script>
 <script>
   // Add your code here!
+  // 1
   $("article img").addClass("image-center");
+
+  // 2
   $("article p").last().remove();
+
+  // 3
   $("#title").css("font-size", giveRandomNum())
   function giveRandomNum(){
-    return Math.floor(Math.random() * (100 - 0 + 1) + 0);
+    return Math.floor(Math.random() * (100 - 0 + 1) + 0);   // <-- props from J
+    // (You can be explicit about this to emphasize that the min is 0.)
+    // (Sorry about my lag here.)
   }
+
+  // 4
+  const newLi = $('<li>');   // This needs attention...
+  newLi.text('Let us name the puppy Paprika.');
+  $('ol').append(newLi);
+
+  // 5
+  $('aside').text('');
+
+  // 6
+
+
+  // $('input').on('change', changeColor());
+  $('input').on('change', changeColor);
+  // THANK YOU!!!!!!!!!!!!!!!!!!!!
+  // Matt: no strokes....
+  //
+  $('input').on('change', console.log('Changing?'));
+  // $('input').val().on('change', console.log("wow, a change."));
+  // $('.row lastChild').on('change', console.log("wow, a change."));
+
+  function changeColor() {
+    // console.log($('input:nth-child(1)').val());
+    let $redVal = $('input:eq(0)').val();    // $('input').eq(1)
+    let $blueVal = $('input:eq(1)').val();
+    // let $greenVal = $('input:eq(2)').val();
+    let $greenVal = $('input').eq(2).val();
+
+    $('body').css('background-color', `rgb(${$redVal},${$greenVal},${$blueVal})`);
+    // $('body').css('background-color', `tomato`);
+  }
+
 
 </script>
 </body>
